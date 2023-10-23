@@ -1,0 +1,72 @@
+import java.io.*;
+import java.util.*;
+class Main
+{
+public static void main (String[] args) 
+{
+      Scanner sc = new Scanner(System.in);
+      Stack<Character> st = new Stack<>();
+      String str = sc.nextLine();
+      for(int i = 0; i< str.length(); i++)
+      {
+        char ch = str.charAt(i);
+        if(ch=='('|| ch=='{' || ch == '[')
+        {
+          st.push(ch);
+        }
+        else if(( st.size()>0) && (ch ==')'|| ch ==  '}' || ch == ']' ))
+        {
+            if(ch == ')')
+            {
+                if(st.peek() =='(')
+                {
+                   st.pop();
+                }
+                else
+                {
+                  System.out.println("false");
+                  break;
+                }
+            }
+            else if(ch == ']')
+            {
+                if(st.peek() =='[')
+                {
+                   st.pop();
+                }
+                else
+                {
+                  System.out.println("false");
+                  break;
+                }
+            }
+            else if(ch == '}')
+            {
+                if(st.peek() =='{')
+                {
+                   st.pop();
+                }
+                else
+                {
+                  System.out.println("false");
+                  break;
+                }
+            }
+            
+           }
+           else
+           {
+              System.out.print("false");
+              return;
+           }
+        }
+         if(st.size()==0)
+         {
+           System.out.println("true");
+         }
+         else
+         {
+           System.out.println("false");
+         }
+    }
+}
